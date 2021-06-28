@@ -1,0 +1,15 @@
+<p>質問編集ページ</p>
+<% if logged_in? %>
+  <div class="row">
+    <aside class="col-sm-4">
+      <%= form_with(model: @question, local: true) do |f| %>
+        <div class="form-group">
+          <%= f.label :content, '編集内容' %>
+          <%= f.text_area :content, class: 'form-control', rows: 5 %>
+        </div>
+        <%= f.submit '質問する', class: 'btn btn-primary btn-block' %>
+      <% end %>
+      <%= link_to 'プロフィールに戻る', user_path(current_user) %>
+    </aside>
+  </div>
+<% end %>  
