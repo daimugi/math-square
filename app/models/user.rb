@@ -7,4 +7,21 @@ class User < ApplicationRecord
   has_secure_password
   
   has_many :questions
+  has_many :favorites 
+  has_many :likes, through: :favorites, source: :question
+  has_many :answers
+  
+  
+  def favorite(question)
+    self.favorites.find_or_create_by(question_id: question.id)
+  end 
+  
+  def unfavorite(question)
+    relationship = self.favorites.find_or_create_by(question_id: question.id)
+    relationship.destroy if relationship
+  end
+  
+  def liking?(question)
+    self.likes.include?(question)
+  end  
 end

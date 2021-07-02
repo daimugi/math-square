@@ -1,7 +1,13 @@
 class QuestionsController < ApplicationController
-  before_action :require_user_logged_in
+  before_action :require_user_logged_in, only: [:new, :create, :edit, :update, :destroy]
   before_action :correct_user, only: [:edit, :update, :destroy]
   before_action :question_params, only: [:create]
+  
+  
+  def show
+    @question = Question.find(params[:id])
+    @answers = @question.answers
+  end
   
   def new 
     @question = Question.new
@@ -17,9 +23,10 @@ class QuestionsController < ApplicationController
       render :new
     end
   end  
-
+  
   def edit
-  end
+  end  
+
   
   def update
     if @question.update(question_params)
@@ -37,6 +44,12 @@ class QuestionsController < ApplicationController
     redirect_back(fallback_location: root_path)
   end
   
+  def search
+    @questions = Question.search(params[:keyword])
+    @keyword = params[:keyword]
+    render :search
+  end  
+    
   private 
   
   def question_params

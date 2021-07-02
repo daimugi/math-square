@@ -24,8 +24,10 @@ class UsersController < ApplicationController
     end
   end
   
-  def feed_questions
-    Question.all
+  def likes
+    @user = User.find(params[:id])
+    @likes = @user.likes.page(params[:page])
+    counts(@user)
   end  
   
   private

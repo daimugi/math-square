@@ -2,9 +2,10 @@ class ApplicationController < ActionController::Base
   
   include SessionsHelper
   
-  private 
-  
+  private
+    
   def counts(user)
-    @counts_questions = user.questions.count
+    @count_questions = user.questions.count
+    @count_likes = user.likes.count
   end 
 end

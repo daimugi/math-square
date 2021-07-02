@@ -1,22 +1,22 @@
-<ul class="list-unstyled">
-  <% questions.each do |question| %>
-    <li class="media mb-3">
-      <img class="mr-2 rounded" src="<%= gravatar_url(question.user, { size: 50 }) %>" alt="">
-      <div class="media-body">
-        <div>
-          <%= link_to question.user.name, user_path(question.user) %> <span class="text-muted">posted at <%= question.created_at %></span>
-        </div>
-        <div>
-          <p><%= question.content %></p>
-        </div>
-        <div>
-          <% if current_user == question.user %>
-            <%= link_to "編集する", edit_question_path(question), class: 'btn btn-success btn-sm' %>
-            <%= link_to "削除する", question, method: :delete, data: { confirm: "本当に削除しますか？" }, class: 'btn btn-danger btn-sm' %>
-          <% end %>  
-        </div>
-      </div>
-    </li>
-  <% end %>
-  <%= paginate questions %>
-</ul>
+<p>質問詳細ページ</p>
+<li class="media mb-3">
+  <img class="mr-2 rounded" src="<%= gravatar_url(@question.user, { size: 50 }) %>" alt="">
+  <div class="media-body">
+    <div>
+      <%= link_to @question.user.name, user_path(@question.user) %> <span class="text-muted">posted at <%= @question.created_at %></span>
+    </div>
+    <div>
+      <p><%= @question.content %></p>
+    </div>
+    <div>
+      <% if current_user == @question.user %>
+        <%= link_to "編集する", edit_question_path(@question), class: 'btn btn-success btn-sm' %>
+      <% else %>
+        <%= link_to "回答する", new_answer_path(question_id: @question), class: 'btn btn-success btn-sm' %>
+      <% end %>  
+    </div>
+  </div>
+</li>
+<%= render 'answers/answers', answers: @answers %>
+  
+

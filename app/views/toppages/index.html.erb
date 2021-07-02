@@ -2,6 +2,12 @@
   <div class="text-center">
     <h1>Welcome to the Math Square!</h1>
   </div>
+  <div class="search-form">
+    <%= form_with url: search_questions_path, method: :get, local: true do |f| %>
+      <%= f.text_field :keyword, value: @keyword %>
+      <%= f.submit '検索' %>
+    <% end %>
+  </div>
   <div class="col-sm-8">
     <%= render 'questions/questions', questions: @questions %>
   </div>

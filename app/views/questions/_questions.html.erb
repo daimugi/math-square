@@ -10,10 +10,17 @@
           <p><%= question.content %></p>
         </div>
         <div>
-          <% if current_user == question.user %>
-            <%= link_to "編集する", edit_question_path(question), class: 'btn btn-success btn-sm' %>
-            <%= link_to "削除する", question, method: :delete, data: { confirm: "本当に削除しますか？" }, class: 'btn btn-danger btn-sm' %>
+          <%= link_to '質問詳細', question_path(question), class: 'btn btn-light btn-sm' %>
+        </div>  
+        <div>
+          <% if logged_in? %>        
+            <%= render 'favorites/favorite_button', question: question %>
           <% end %>  
+        </div>   
+        <div>
+          <% if current_user == question.user %>
+            <%= link_to "削除する", question, method: :delete, data: { confirm: "本当に削除しますか？" }, class: 'btn btn-danger btn-sm' %>
+          <% end %>
         </div>
       </div>
     </li>

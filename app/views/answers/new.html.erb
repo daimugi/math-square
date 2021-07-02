@@ -1,0 +1,29 @@
+<p>回答ページ</p>
+<li class="media mb-3">
+  <img class="mr-2 rounded" src="<%= gravatar_url(@question.user, { size: 50 }) %>" alt="">
+  <div class="media-body">
+    <div>
+      <%= link_to @question.user.name, user_path(@question.user) %> <span class="text-muted">posted at <%= @question.created_at %></span>
+    </div>
+    <div>
+      <p><%= @question.content %></p>
+    </div>
+  </div>
+</li>
+
+<% if logged_in? %>
+  <div class="row">
+    <aside class="col-sm-4">
+      <%= form_with(model: @answer, local: true) do |f| %>
+      
+        <%= f.hidden_field :question_id %>
+        <div class="form-group">
+          <%= f.label :content, '回答内容' %>
+          <%= f.text_area :content, class: 'form-control', rows: 5 %>
+        </div>
+        <%= f.submit '回答する', class: 'btn btn-primary btn-block' %>
+      <% end %>
+      <%= link_to 'プロフィールに戻る', user_path(current_user) %>
+    </aside>
+  </div>
+<% end %>  
