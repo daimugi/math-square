@@ -1,14 +1,17 @@
 <div class="center jumbotron">
   <div class="text-center">
-    <h1>Welcome to the Math Square!</h1>
+    <h1>Math Square</h1>
   </div>
-  <div class="search-form">
-    <%= form_with url: search_questions_path, method: :get, local: true do |f| %>
-      <%= f.text_field :keyword, value: @keyword %>
-      <%= f.submit '検索' %>
-    <% end %>
-  </div>
-  <div class="col-sm-8">
+  <center>
+    <div class="search-form ">
+      <%= form_with url: search_questions_path, method: :get, local: true do |f| %>
+        <%= f.text_field :keyword, value: @keyword %>
+        <%= f.submit '検索' %>
+      <% end %>
+    </div>
+  </center>
+  <div class="offset-sm-2 col-sm-8">
+    <h4 class="text-center">新着の質問</h4>
     <%= render 'questions/questions', questions: @questions %>
   </div>
 </div>

@@ -1,14 +1,12 @@
-<p>質問詳細ページ</p>
+<div class="text-center">質問詳細</div>
 <li class="media mb-3">
   <img class="mr-2 rounded" src="<%= gravatar_url(@question.user, { size: 50 }) %>" alt="">
   <div class="media-body">
     <div>
       <%= link_to @question.user.name, user_path(@question.user) %> <span class="text-muted">posted at <%= @question.created_at %></span>
     </div>
-    <div>
+    <div class="list-group-item">
       <p><%= @question.content %></p>
-    </div>
-    <div>
       <% if current_user == @question.user %>
         <%= link_to "編集する", edit_question_path(@question), class: 'btn btn-success btn-sm' %>
       <% else %>
@@ -17,6 +15,7 @@
     </div>
   </div>
 </li>
+<div class="text-center">回答一覧</div>
 <%= render 'answers/answers', answers: @answers %>
   
 
