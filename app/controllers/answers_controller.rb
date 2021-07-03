@@ -16,6 +16,7 @@ class AnswersController < ApplicationController
 
   def create
     @answer = current_user.answers.build(answer_params)
+    @question = @answer.question
     if @answer.save
       flash[:success] = '回答しました'
       redirect_to question_path(@answer.question)

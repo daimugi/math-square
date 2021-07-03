@@ -12,7 +12,7 @@ Rails.application.routes.draw do
     end
   end
   
-  resources :questions do 
+  resources :questions, only: [:show, :new, :create, :edit, :update, :destroy] do 
     collection do
       get :search
     end
