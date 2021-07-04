@@ -3,8 +3,9 @@ class AnswersController < ApplicationController
   before_action :answer_params, only: [:create]
   
   def show
-    @answers = current_user.answers.find_by(id: params[:id])
-    unless @answers
+    @answer = current_user.answers.find_by(id: params[:id])
+    @question = @answer.question
+    unless @answer
     redirect_back(fallback_location: root_path)
     end
   end

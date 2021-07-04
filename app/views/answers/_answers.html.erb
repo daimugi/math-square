@@ -8,8 +8,7 @@
       </div>
       <div class="list-group-item">
         <p><%= answer.content %></p>
-      </div>
-      <div>
+        <%= link_to '回答詳細', answer_path(answer), class: 'btn btn-light btn-sm' %>
         <% if current_user == answer.user %>
           <%= link_to '削除する', answer, method: :delete, data: { confirm: "本当に削除しますか？" }, class: 'btn btn-danger btn-sm' %>
         <% end %>

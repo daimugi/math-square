@@ -1,4 +1,5 @@
 <ul class="list-unstyled">
+  <% if @questions.any? %>
   <% @questions.each do |question| %>
   <li class="media mb-3">
     <img class="mr-2 rounded" src="<%= gravatar_url(question.user, { size: 50 }) %>" alt="">
@@ -14,5 +15,8 @@
       </div>  
     </div>
   </li>
+  <% end %>
+  <% else %>
+    <p>検索条件に一致する質問が見つかりませんでした</p>
   <% end %>
 </ul>  

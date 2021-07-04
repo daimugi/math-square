@@ -1,0 +1,27 @@
+<p class="text-center">質問詳細</p>
+<li class="media mb-3">
+  <img class="mr-2 rounded" src="<%= gravatar_url(@question.user, { size: 50 }) %>" alt="">
+  <div class="media-body">
+    <div>
+      <%= link_to @question.user.name, user_path(@question.user) %> <span class="text-muted">posted at <%= @question.created_at %></span>
+    </div>
+    <div class="list-group-item">
+      <p><%=safe_join(@question.content.split("\n"),tag(:br))%></p>
+    </div>
+  </div>
+</li>
+<p class="text-center">回答詳細</p>
+<li class="media mb-3">
+  <img class="mr-2 rounded" src="<%= gravatar_url(@answer.user, { size: 50 }) %>" alt="">
+  <div class="media-body">
+    <div>
+      <%= link_to @answer.user.name, user_path(@answer.user) %> <span class="text-muted">posted at <%= @answer.created_at %></span>
+    </div>
+    <div class="list-group-item">
+      <p><%=safe_join(@answer.content.split("\n"),tag(:br))%></p>
+      <% if current_user == @answer.user %>
+        <%= link_to '削除する', @answer, method: :delete, data: { confirm: "本当に削除しますか？" }, class: 'btn btn-danger btn-sm' %>
+      <% end %>
+    </div>
+  </div>
+</li>    
