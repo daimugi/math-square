@@ -1,20 +1,22 @@
-<p class="text-center">質問詳細</p>
-<li class="media mb-3">
-  <img class="mr-2 rounded" src="<%= gravatar_url(@question.user, { size: 50 }) %>" alt="">
-  <div class="media-body">
-    <div>
-      <%= link_to @question.user.name, user_path(@question.user) %> <span class="text-muted">posted at <%= @question.created_at %></span>
+<p>質問詳細</p>
+<ul class="list-unstyled">
+  <li class="media mb-3">
+    <img class="mr-2 rounded" src="<%= gravatar_url(@question.user, { size: 50 }) %>" alt="">
+    <div class="media-body">
+      <div>
+        <%= link_to @question.user.name, user_path(@question.user) %> <span class="text-muted">posted at <%= @question.created_at %></span>
+      </div>
+      <div class="list-group-item">
+        <p><%=safe_join(@question.content.split("\n"),tag(:br))%></p>
+        <% if current_user == @question.user %>
+          <%= link_to "編集する", edit_question_path(@question), class: 'btn btn-success btn-sm' %>
+        <% else %>
+          <%= link_to "回答する", new_answer_path(question_id: @question), class: 'btn btn-success btn-sm' %>
+        <% end %>  
+      </div>
     </div>
-    <div class="list-group-item">
-      <p><%=safe_join(@question.content.split("\n"),tag(:br))%></p>
-      <% if current_user == @question.user %>
-        <%= link_to "編集する", edit_question_path(@question), class: 'btn btn-success btn-sm' %>
-      <% else %>
-        <%= link_to "回答する", new_answer_path(question_id: @question), class: 'btn btn-success btn-sm' %>
-      <% end %>  
-    </div>
-  </div>
-</li>
+  </li>
+</ul>
 <div class="text-center">回答一覧</div>
 <%= render 'answers/answers', answers: @answers %>
   

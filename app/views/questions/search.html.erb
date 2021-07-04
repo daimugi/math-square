@@ -1,22 +1,30 @@
-<ul class="list-unstyled">
-  <% if @questions.any? %>
-  <% @questions.each do |question| %>
-  <li class="media mb-3">
-    <img class="mr-2 rounded" src="<%= gravatar_url(question.user, { size: 50 }) %>" alt="">
-    <div class="media-body">
-      <div>
-        <%= link_to question.user.name, user_path(question.user) %> <span class="text-muted">posted at <%= question.created_at %></span>
+<div class="center jumbotron">
+  <div class="text-center">
+    <h1>Math Square</h1>
+  </div>
+  <ul class="list-unstyled">
+    <% if @questions.any? %>
+      <P class="text-center">検索結果</P>
+      <% @questions.each do |question| %>
+      <div class="offset-2 col-sm-8">
+        <li class="media mb-3"> 
+          <img class="mr-2 rounded" src="<%= gravatar_url(question.user, { size: 50 }) %>" alt="">
+          <div class="media-body list-group-item">
+            <div>
+              <%= link_to question.user.name, user_path(question.user) %> <span class="text-muted">posted at <%= question.created_at %></span>
+            </div>
+            <div>
+              <p><%= question.content.truncate(25) %></p>
+            </div>
+            <div>
+              <%= link_to '質問詳細', question_path(question), class: 'btn btn-light btn-sm' %>
+            </div>  
+          </div>
+        </li>
       </div>
-      <div>
-        <p><%= question.content %></p>
-      </div>
-      <div>
-        <%= link_to '質問詳細', question_path(question), class: 'btn btn-light btn-sm' %>
-      </div>  
-    </div>
-  </li>
-  <% end %>
-  <% else %>
-    <p>検索条件に一致する質問が見つかりませんでした</p>
-  <% end %>
-</ul>  
+      <% end %>
+    <% else %>
+      <p class="text-center">検索条件に一致する質問が見つかりませんでした</p>
+    <% end %>
+  </ul>  
+</div>

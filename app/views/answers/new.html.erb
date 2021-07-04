@@ -1,16 +1,18 @@
 <%= render 'users/form', message: @answer %>
 <p>回答ページ</p>
-<li class="media mb-3">
-  <img class="mr-2 rounded" src="<%= gravatar_url(@question.user, { size: 50 }) %>" alt="">
-  <div class="media-body">
-    <div>
-      <%= link_to @question.user.name, user_path(@question.user) %> <span class="text-muted">posted at <%= @question.created_at %></span>
+<ul class="list-unstyled">
+  <li class="media mb-3">
+    <img class="mr-2 rounded" src="<%= gravatar_url(@question.user, { size: 50 }) %>" alt="">
+    <div class="media-body">
+      <div>
+        <%= link_to @question.user.name, user_path(@question.user) %> <span class="text-muted">posted at <%= @question.created_at %></span>
+      </div>
+      <div>
+        <p><%= @question.content %></p>
+      </div>
     </div>
-    <div>
-      <p><%= @question.content %></p>
-    </div>
-  </div>
-</li>
+  </li>
+</ul>
 
 <% if logged_in? %>
   <div class="row">
