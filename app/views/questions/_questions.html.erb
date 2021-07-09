@@ -8,13 +8,13 @@
         </div>
         <div class="list-group-item">
           <p><%=safe_join(question.content.truncate(25).split("\n"),tag(:br))%></p>
-          <div class="btn-group" role="group" aria-label="Basic example">
+          <div class="btn-group offset-sm-6" role="group" aria-label="Basic example">
           <%= link_to '質問詳細', question_path(question), class: 'btn btn-secondary btn-sm' %>
           <% if logged_in? %>        
             <%= render 'favorites/favorite_button', question: question %>
           <% end %>  
           <% if current_user == question.user %>
-            <%= link_to "削除する", question, method: :delete, data: { confirm: "本当に削除しますか？" }, class: 'btn btn-danger btn-sm' %>
+            <%= link_to "削除", question, method: :delete, data: { confirm: "本当に削除しますか？" }, class: 'btn btn-danger btn-sm' %>
           <% end %>
           </div>
         </div>
