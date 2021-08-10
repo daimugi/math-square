@@ -11,11 +11,11 @@
           <li class="nav-item dropdown">
             <a href="#" class="nav-link dropdown-toggle text-light" data-toggle="dropdown"><%= current_user.name %></a>
             <ul class="dropdown-menu dropdown-menu-right">
-              <li class="nav-item"><%= link_to 'プロフィール', user_path(current_user), class: "nav-link text-dark" %></li>
+              <li class="nav-item"><%= link_to 'プロフィール', user_path(current_user), class: "nav-link text-dark font-weight-bold far fa-user" %></li>
               <li class="dropdown-divider"></li>
-              <li class="nav-item"><%= link_to '質問する', new_question_path, class: "nav-link text-dark" %></li>
+              <li class="nav-item"><%= link_to '質問する', new_question_path, class: "nav-link text-dark font-weight-bold far fa-edit" %></li>
               <li class="dropdown-divider"></li>
-              <li class="nav-item"><%= link_to 'ログアウト', logout_path, method: :delete, class: "nav-link text-dark" %></li>
+              <li class="nav-item"><%= link_to 'ログアウト', logout_path, method: :delete, class: "nav-link text-dark fas fa-sign-out-alt" %></li>
             </ul>
           </li>  
         <% else %>  

@@ -8,17 +8,17 @@
     <%= form_with(model: @user, local: true) do |f| %>
       
       <div class="form-group">
-        <%= f.label :name, '名前' %>
+        <i class="far fa-user fa-lg"></i><%= f.label :name, '名前' %>
         <%= f.text_field :name, class: 'form-control', placeholder: '名前' %>
       </div>
 
       <div class="form-group">
-        <%= f.label :email, 'メール' %>
+        <i class="far fa-envelope fa-lg"></i><%= f.label :email, 'メール' %>
         <%= f.email_field :email, class: 'form-control', placeholder: 'メール' %>
       </div>
 
       <div class="form-group">
-        <%= f.label :password, 'パスワード' %>
+        <i class="fas fa-key fa-lg"></i><%= f.label :password, 'パスワード' %>
         <%= f.password_field :password, class: 'form-control', placeholder: 'パスワード' %>
       </div>
 
