@@ -2,15 +2,19 @@
 <p>質問ページ</p>
 <% if logged_in? %>
   <div class="row">
-    <aside class="col-sm-4">
-      <%= form_with(model: @question, local: true) do |f| %>
+    <aside class="col-sm-8">
+      <%= form_with(model: @question, name: :form1, local: true) do |f| %>
         <div class="form-group">
           <%= f.label :content, '質問内容' %>
-          <%= f.text_area :content, class: 'form-control', rows: 5 %>
+          <%= f.text_area :content, class: 'form-control', rows: 10 %>
+          <%= f.file_field :image, id: :question_image %>
         </div>
         <%= f.submit '質問する', class: 'btn btn-primary btn-block' %>
-      <% end %>
+      <% end %>  
       <%= link_to 'プロフィールに戻る', user_path(current_user) %>
     </aside>
   </div>
-<% end %>  
+<% end %> 
+  
+  
+  

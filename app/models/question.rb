@@ -6,6 +6,8 @@ class Question < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :likeds, through: :favorites, source: :user
   has_many :answers, dependent: :destroy
+  
+  mount_uploader :image, ImageUploader
 
   def self.search(keyword)
     where(["content like?", "%#{keyword}%"])

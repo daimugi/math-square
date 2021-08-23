@@ -1,5 +1,5 @@
 <div class="center jumbotron">
-  <div class="text-center">
+  <div class="text-center font-italic">
     <h1>Math Square</h1>
   </div>
   <ul class="list-unstyled">
@@ -17,7 +17,7 @@
               <p><%= question.content.truncate(25) %></p>
             </div>
             <div>
-              <%= link_to '質問詳細', question_path(question), class: 'btn btn-light btn-sm' %>
+              <%= link_to '質問詳細', question_path(question), class: 'btn btn-light btn-sm offset-sm-6' %>
             </div>  
           </div>
         </li>

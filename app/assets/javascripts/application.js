@@ -12,4 +12,15 @@
 //
 //= require rails-ujs
 //= require turbolinks
+//= require jquery
+//= require jquery_ujs
 //= require_tree .
+
+
+
+
+function addTF(str)
+{
+	document.form1.face.value += str
+}
+  

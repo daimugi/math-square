@@ -49,12 +49,13 @@ class QuestionsController < ApplicationController
     @keyword = params[:keyword]
     render :search
   end  
+  
     
   private 
   
   def question_params
-    params.require(:question).permit(:content)
-  end  
+    params.require(:question).permit(:content, :image)
+  end
   
   def correct_user
     @question =current_user.questions.find_by(id: params[:id])
