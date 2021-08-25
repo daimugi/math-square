@@ -8,8 +8,8 @@
         </div>
         <div class="list-group-item">
           <p><%=safe_join(question.content.truncate(25).split("\n"),tag(:br))%></p>
-          <div class="btn-group offset-sm-8" role="group" aria-label="Basic example">
-          <%= link_to '質問詳細', question_path(question), class: 'btn btn-secondary btn-sm' %>
+          <div class="btn-group offset-sm-10" role="group" aria-label="Basic example">
+          <%= link_to '', question_path(question), class: 'btn btn-sm fas fa-external-link-alt fa-lg' %>
           <% if logged_in? %>        
             <%= render 'favorites/favorite_button', question: question %>
           <% end %> 
