@@ -4,8 +4,8 @@
   </div>
     <div class="search-form text-center">
       <%= form_with url: search_questions_path, method: :get, local: true do |f| %>
-        <%= f.text_field :keyword, value: @keyword %>
-        <button type="submit">
+        <%= f.text_field :keyword, value: @keyword %> 
+        <button type="submit" class="btn-secondary">
           <i class="fas fa-search"></i> 検索
         </button>
       <% end %>

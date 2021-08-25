@@ -8,11 +8,11 @@
       </div>
       <div class="list-group-item">
         <p><%=safe_join(@question.content.split("\n"),tag(:br))%></p>
-        <p>
-          <% if @question.image? %>
-          <%= image_tag @question.image.url %>
-          <% end %>
-        </p>
+        <div>
+        <% if @question.image? %>
+          <%= image_tag @question.image.url, :alt => '/' %>
+        <% end %>  
+        </div>
         <% if current_user == @question.user %>
           <%= link_to "編集する", edit_question_path(@question), class: 'btn btn-success btn-sm' %>
         <% else %>

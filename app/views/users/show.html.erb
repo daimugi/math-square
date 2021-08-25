@@ -1,24 +1,24 @@
 <div class="row">
-  <aside class="offset-sm-4 col-sm-4">
+  <aside class="col-sm-4">
     <div class="card">
       <div class="card-header">
-        <h3 class="card-title"><%= @user.name %></h3>
+        <h3 class="card-title text-center"><%= @user.name %></h3>
       </div>
       <div class="card-body">
         <img class="rounded img-fluid" src="<%= gravatar_url(@user, { size: 500 }) %>" alt="">
       </div>
     </div>
+    <div class="offset-sm-4">
+    <% if current_user == @user %>  
+      <%= link_to "質問する", new_question_path, class: 'btn btn-primary btn-sm-2 far fa-edit' %>
+    <% end %>  
+    </div>
   </aside>
-  <div class="offset-sm-2 col-sm-8">
+  <div class="col-sm-8">
     <ul class="nav nav-tabs nav-justified mb-3">
       <li class="nav-item"><a href="<%= user_path(@user) %>" class="nav-link <%= 'active' if current_page?(user_path(@user)) %>">質問<span class="badge badge-secondary"><%= @count_questions %></span></a></li>
       <li class="nav-item"><a href="<%= likes_user_path(@user) %>" class="nav-link <%= 'active' if current_page?(likes_user_path(@user)) %>">お気に入り<span class="badge badge-secondary"><%= @count_likes %></span></a></li>
     </ul>
     <%= render 'questions/questions', questions: @questions %>
-  <div class="offset-sm-5">
-    <% if current_user == @user %>  
-      <%= link_to "質問する", new_question_path, class: 'btn btn-primary btn-sm-2' %>
-    <% end %>  
-  </div>
   </div>
 </div>

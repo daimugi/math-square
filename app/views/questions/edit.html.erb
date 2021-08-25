@@ -1,11 +1,12 @@
 <p>質問編集ページ</p>
 <% if logged_in? %>
   <div class="row">
-    <aside class="col-sm-4">
+    <aside class="col-sm-6">
       <%= form_with(model: @question, local: true) do |f| %>
         <div class="form-group">
           <%= f.label :content, '編集内容' %>
-          <%= f.text_area :content, class: 'form-control', rows: 5 %>
+          <%= f.text_area :content, class: 'form-control', rows: 8 %>
+          <%= f.file_field :image, id: :question_image %>
         </div>
         <%= f.submit '質問する', class: 'btn btn-primary btn-block' %>
       <% end %>
